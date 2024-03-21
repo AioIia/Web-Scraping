@@ -19,17 +19,19 @@ def modify_image(path):
 
         if sizeTaken < 320:
             if sizeTaken == img.width:
-                img.resize((320, int(img.height * 320 / img.width)))
+                img = img.resize((int(320*0.85), int(img.height*320/img.width*0.85)))
             else:
-                img.resize((int(img.width * 320 / img.height), 320))
+                img = img.resize((int(img.width * 320 / img.height*0.85), int(320*0.85)))
+            sizeTaken = 320
 
-        canvas = Image.new('RGB', (int(sizeTaken*1.075), int(sizeTaken*1.075)), (255, 255, 255))
+
+        canvas = Image.new('RGB', (sizeTaken, sizeTaken), (255, 255, 255))
 
         # calcul la position ou mettre limage
-        if sizeTaken == img.width:
-            pos = ((int(0.075 * sizeTaken/2), int(sizeTaken / 2 - img.height / 2)))
+        if max(img.size) == img.width:
+            pos = (int(img.width*0.075), int(sizeTaken / 2 - img.height / 2))
         else:
-            pos = ((int(sizeTaken / 2 - img.width / 2), int(0.075 * sizeTaken/2)))
+            pos = ((int(sizeTaken / 2 - img.width / 2), int(img.height*0.075)))
 
         canvas.paste(img, pos)
         canvas.save(path + '/' + imgstr)

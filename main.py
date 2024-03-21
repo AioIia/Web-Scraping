@@ -1,28 +1,21 @@
-import requests
-from bs4 import BeautifulSoup
 import os
 from download import download_logo, write_to_file
 
-if not os.path.exists('Logos'):
-    os.makedirs('Logos')
+def main(path_to_write, path_to_channel_names):
 
-#ouvre le fichier contenant le nom des chaines
-file_path = f"{os.getcwd()}/channel_names.txt"
-with open(file_path, 'r', encoding='latin-1') as file:
-    channels = file.readlines()
+    with open(path_to_channel_names, 'r', encoding='latin-1') as file:
+        channels = file.readlines()
 
-# Enlever les sauts de ligne
-channels = [channel.strip() for channel in channels]
-channels.sort()
+    # Enlever les sauts de ligne
+    channels = [channel.strip() for channel in channels]
+    channels.sort()
 
-def main():
     n = len(channels)
     i = 0
-    logo_folder = f"{os.getcwd()}/Logos"
     # Télécharger les logos pour chaque chaîne
     for channel in channels:
         try:
-            download_logo(channel, logo_folder)
+            download_logo(channel, path_to_write)
             print(f"Logo téléchargé pour {channel}, {round((i/n)*100, 2)}%")
 
         except Exception as e:
@@ -30,4 +23,4 @@ def main():
         i += 1
 
 if __name__ == '__main__':
-    main();
+    main("Logos/Logos_epg.best", "channels_names/channel_names_epg.best.txt");

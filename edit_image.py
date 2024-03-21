@@ -27,9 +27,9 @@ def modify_image(path):
 
         # calcul la position ou mettre limage
         if sizeTaken == img.width:
-            pos = ((int(0.075 * sizeTaken), int(sizeTaken / 2 - img.height / 2)))
+            pos = ((int(0.075 * sizeTaken/2), int(sizeTaken / 2 - img.height / 2)))
         else:
-            pos = ((int(sizeTaken / 2 - img.width / 2), int(0.075 * sizeTaken)))
+            pos = ((int(sizeTaken / 2 - img.width / 2), int(0.075 * sizeTaken/2)))
 
         canvas.paste(img, pos)
         canvas.save(path + '/' + imgstr)

@@ -4,8 +4,13 @@ from bs4 import BeautifulSoup
 
 #fonction pour telecharger une image a partir dune chainde de characteres et dun path
 def download_logo(channel_name, path):
-    #lance la recherche
-    google_search_url = f"https://www.google.com/search?hl=en&tbm=isch&q={channel_name.replace(' ', '+')}+logo"
+
+    if len(channel_name)>2:
+        if channel_name[-3] == '.':
+            google_search_url = f"https://www.google.com/search?hl=en&tbm=isch&q={channel_name.replace(' ', '+')[:-3]}+logo"
+        else:
+            google_search_url = f"https://www.google.com/search?hl=en&tbm=isch&q={channel_name.replace(' ', '+')}+logo"
+
     response = requests.get(google_search_url)
     #prends la page html et recherche ou la premiere image se trouve
     soup = BeautifulSoup(response.text, 'html.parser')

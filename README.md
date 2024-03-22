@@ -34,4 +34,4 @@ Pour déterminer le nom epg.best
   * La résolution minimale doit être de 320p.
 
 ### Specification
-#### main.py
+* #### main.py

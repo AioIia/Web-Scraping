@@ -10,6 +10,7 @@
   * [`download.py`](#`download.py`)
   * [`edit_image.py`](#`edit_image.py`)
   * [`extract_xls_files.py`](#`extract_xls_files.py`)
+ *[Using](#Using)
 ### Context
 
 Pour l’application airmont player, il est nécéssaire de générer la liste des icones des chaine de TV mondiales.
@@ -48,5 +49,11 @@ Pour déterminer le nom epg.best
 * ### extract_xls_files.py
   * `extract_xls_files(path)`
     * path est le fichier .xls contenant la liste du nom des chaines sous le format epg.best.
-    
-      
+    * 
+## Using
+Le projet utilise:
+* openpyxl
+* os
+* bs4
+* requests
+* PIL

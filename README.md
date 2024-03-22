@@ -6,7 +6,7 @@
 * [Context](#Context)
 * [Requirements](#Context)
 * [Specifications](#Specifications)
-  * [Specifications](#Specifications)
+  * [`main.py`](#`main.py`)
 
 ### Context
 

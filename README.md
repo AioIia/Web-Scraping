@@ -22,12 +22,15 @@ epg.best » « logo », télécharger la première image et l’enregistrer sous
 Pour déterminer le nom epg.best
 * zipper le repertoire et l’uploader sur cloud.airmont.com/tbd
 * fomater les images sous forme de carré avec un liseré blanc puis les sauvegarder dans un autre répertoire, respectant les consignes suivantes:
-
   
     coté du carré 100%
+  
     largeur du liseré 7,50%
+  
     longueur de l'icone d'origine 85,00%
+  
     L’icone doit être centrée dans le carré sur la largeur.
+  
     La résolution minimale doit être de 320p
 
 1- 

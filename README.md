@@ -5,7 +5,7 @@
 ## Table of contents
 * [Context](#Context)
 * [Requirements](#Context)
-* [Setup](#setup)
+* [Specifications](#Specifications)
 
 ### Context
 
@@ -16,7 +16,7 @@ Nous souhaitons générer automatiquement un répertoire contenant les logo des 
 ### Requirements
 
 
-La convention de nommage des fichier est celui de epg.best : <nom de la chaine sans espaces>.<code du pays à 2 lettres>.
+La convention de nommage des fichier est celui de epg.best : *nom de la chaine sans espace*.*code du pays à 2 lettres*.
 La procédure est la suivante :
 
 * Extraire la liste des nom de chaines au format epg.best dans un fichier texte (ou csv). Cf fichier `20240318 list of tv
@@ -31,3 +31,5 @@ Pour déterminer le nom epg.best
   * Longueur de l'icone d'origine 85,00%
   * L’icone doit être centrée dans le carré sur la largeur.
   * La résolution minimale doit être de 320p.
+
+### Specification

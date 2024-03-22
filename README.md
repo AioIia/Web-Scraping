@@ -20,7 +20,7 @@ channels.xlsx`
 * Pour chacun des nom de chaine au format epg, lancer une recherche google image « nom de chaine au format
 epg.best » « logo », télécharger la première image et l’enregistrer sous son nom epg.best, dans 1 répertoire unique.
 Pour déterminer le nom epg.best
-* Zipper le repertoire et l’uploader sur <a href = "cloud.airmont.com/tbd"> cloud.airmont.com/tbd</a>
+* Zipper le repertoire et l’uploader sur [cloud.airmont.com/tbd](cloud.airmont.com/tbd)
 * Formater les images sous forme de carré avec un liseré blanc puis les sauvegarder dans un autre répertoire, respectant les consignes suivantes:
   
   <li style="margin-left: 25px;">

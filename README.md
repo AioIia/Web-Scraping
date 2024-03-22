@@ -23,7 +23,6 @@ Pour déterminer le nom epg.best
 * Zipper le repertoire et l’uploader sur <a href = "cloud.airmont.com/tbd"> cloud.airmont.com/tbd</a>
 * Formater les images sous forme de carré avec un liseré blanc puis les sauvegarder dans un autre répertoire, respectant les consignes suivantes:
   
-<li>
   <li>
       coté du carré 100%
   </li>
@@ -39,4 +38,3 @@ Pour déterminer le nom epg.best
    <li>
       La résolution minimale doit être de 320p
    </li>
-</li>

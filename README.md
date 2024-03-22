@@ -2,14 +2,18 @@
 <h2 align="center">Test-web-scraping</h3>
 <h3 align="center">AIMT-058-23-000050-C Generation de la base de donnée d'icones de chaines tv 3/18/2024</h3>
 
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
 
-## Context
+### Context
 
 Pour l’application airmont player, il est nécéssaire de générer la liste des icones des chaine de TV mondiales.
 Cette liste peut présenter plusieurs millier de fichiers, qui vont aussi évoluer dans le temps.
 Nous souhaitons générer automatiquement un répertoire contenant les logo des chaines de TV.
 
-## Requirements
+### Requirements
 
 
 La convention de nommage des fichier est celui de epg.best : <nom de la chaine sans espaces>.<code du pays à 2 lettres>.

@@ -49,7 +49,7 @@ Pour déterminer le nom epg.best
 * ### extract_xls_files.py
   * `extract_xls_files(path)`
     * path est le fichier .xls contenant la liste du nom des chaines sous le format epg.best.
-    * 
+    
 ## Using
 Le projet utilise:
 * openpyxl

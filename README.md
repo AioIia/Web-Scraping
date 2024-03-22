@@ -23,18 +23,18 @@ Pour déterminer le nom epg.best
 * Zipper le repertoire et l’uploader sur <a href = "cloud.airmont.com/tbd"> cloud.airmont.com/tbd</a>
 * Formater les images sous forme de carré avec un liseré blanc puis les sauvegarder dans un autre répertoire, respectant les consignes suivantes:
   
-  <li>
-      coté du carré 100%
-  </li>
-  <li>
-      largeur du liseré 7,50%
-  </li>
-  <li>
-      longueur de l'icone d'origine 85,00%
-  </li>
-  <li>
-       L’icone doit être centrée dans le carré sur la largeur.
-  </li>
+		  <li>
+		      coté du carré 100%
+		  </li>
+		  <li>
+		      largeur du liseré 7,50%
+		  </li>
+		  <li>
+		      longueur de l'icone d'origine 85,00%
+		  </li>
+		  <li>
+		       L’icone doit être centrée dans le carré sur la largeur.
+		  </li>
    <li>
       La résolution minimale doit être de 320p
    </li>

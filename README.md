@@ -3,8 +3,8 @@
 <h3 align="center">AIMT-058-23-000050-C Generation de la base de donnée d'icones de chaines tv 3/18/2024</h3>
 
 ## Table of contents
-* [General info](#general-info)
-* [Technologies](#technologies)
+* [Context](#Context)
+* [Requirements](#Context)
 * [Setup](#setup)
 
 ### Context

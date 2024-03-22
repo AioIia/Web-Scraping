@@ -33,7 +33,7 @@ Pour déterminer le nom epg.best
   * L’icone doit être centrée dans le carré sur la largeur.
   * La résolution minimale doit être de 320p.
 
-### Specification
+### Specifications
 * #### main.py
   * `main(path_to_write, path_to_channel_names)`
     * path_to_write est le repertoir ou les chaines seront stockées, path_to_channel_names est le fichier texte où le nom de les chaines sont sstocke ouù une ligne correspond au nom d'une chaine.

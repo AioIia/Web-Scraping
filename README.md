@@ -10,7 +10,6 @@
   * [`download.py`](#`download.py`)
   * [`edit_image.py`](#`edit_image.py`)
   * [`extract_xls_files.py`](#`extract_xls_files.py`)
-  * 
 ### Context
 
 Pour l’application airmont player, il est nécéssaire de générer la liste des icones des chaine de TV mondiales.

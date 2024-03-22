@@ -4,7 +4,7 @@
 
 ## Table of contents
 * [Context](#Context)
-* [Requirements](#Context)
+* [Requirements](#Requirements)
 * [Specifications](#Specifications)
   * [`main.py`](#`main.py`)
 
@@ -35,4 +35,18 @@ Pour déterminer le nom epg.best
 
 ### Specification
 * #### main.py
-  *   
+  * `main(path_to_write, path_to_channel_names)`
+    * path_to_write est le repertoir ou les chaines seront stockées, path_to_channel_names est le fichier texte où le nom de les chaines sont sstocke ouù une ligne correspond au nom d'une chaine.
+* #### download.py
+  * `download_logo(channel_name, path)`
+    * channel_name est la liste des chaines, path est le repertoir ou les chaines seront stockées.
+  * `write_to_file(file, content)`
+    * file est le fichier txt ou le content sera ecrit suivi dun retour a la ligne.
+* ### edit_image.py
+  * `modify_image(path)`
+    * path est le repertoire ou les images sont stocke puis applique a chacune d'elles les [Requirements](#Requirements)
+* ### extract_xls_files.py
+  * `extract_xls_files(path)`
+    * path est le fichier .xls contenant la liste du nom des chaines sous le format epg.best.
+    
+      

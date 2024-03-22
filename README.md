@@ -23,7 +23,7 @@ Nous souhaitons générer automatiquement un répertoire contenant les logo des 
 La convention de nommage des fichier est celui de epg.best : *nom de la chaine sans espace*.*code du pays à 2 lettres*.
 La procédure est la suivante :
 
-* Extraire la liste des nom de chaines au format epg.best dans un fichier texte (ou csv). Cf fichier `20240318 list of tv channels.xlsx`
+* Extraire la liste des nom de chaines au format epg.best dans un fichier texte (ou csv). Cf fichier `channel_names/20240318 list of tv channels.xlsx`
 * Pour chacun des nom de chaine au format epg, lancer une recherche google image « nom de chaine au format epg.best » « logo », télécharger la première image et l’enregistrer sous son nom epg.best, dans 1 répertoire unique.
 Pour déterminer le nom epg.best
 * Zipper le repertoire et l’uploader sur [cloud.airmont.com/tbd](https://cloud.airmont.com/tbd)

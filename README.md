@@ -7,7 +7,10 @@
 * [Requirements](#Requirements)
 * [Specifications](#Specifications)
   * [`main.py`](#`main.py`)
-
+  * [`download.py`](#`download.py`)
+  * [`edit_image.py`](#`edit_image.py`)
+  * [`extract_xls_files.py`](#`extract_xls_files.py`)
+  * 
 ### Context
 
 Pour l’application airmont player, il est nécéssaire de générer la liste des icones des chaine de TV mondiales.
@@ -20,10 +23,8 @@ Nous souhaitons générer automatiquement un répertoire contenant les logo des 
 La convention de nommage des fichier est celui de epg.best : *nom de la chaine sans espace*.*code du pays à 2 lettres*.
 La procédure est la suivante :
 
-* Extraire la liste des nom de chaines au format epg.best dans un fichier texte (ou csv). Cf fichier `20240318 list of tv
-channels.xlsx`
-* Pour chacun des nom de chaine au format epg, lancer une recherche google image « nom de chaine au format
-epg.best » « logo », télécharger la première image et l’enregistrer sous son nom epg.best, dans 1 répertoire unique.
+* Extraire la liste des nom de chaines au format epg.best dans un fichier texte (ou csv). Cf fichier `20240318 list of tv channels.xlsx`
+* Pour chacun des nom de chaine au format epg, lancer une recherche google image « nom de chaine au format epg.best » « logo », télécharger la première image et l’enregistrer sous son nom epg.best, dans 1 répertoire unique.
 Pour déterminer le nom epg.best
 * Zipper le repertoire et l’uploader sur [cloud.airmont.com/tbd](https://cloud.airmont.com/tbd)
 * Formater les images sous forme de carré avec un liseré blanc puis les sauvegarder dans un autre répertoire, respectant les consignes suivantes:

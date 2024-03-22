@@ -24,19 +24,19 @@ Pour déterminer le nom epg.best
 * Formater les images sous forme de carré avec un liseré blanc puis les sauvegarder dans un autre répertoire, respectant les consignes suivantes:
   
 <li>
-  <lu>
+  <li>
       coté du carré 100%
-  </lu>
-  <lu>
+  </li>
+  <li>
       largeur du liseré 7,50%
-  </lu>
-  <lu>
+  </li>
+  <li>
       longueur de l'icone d'origine 85,00%
-  </lu>
-  <lu>
+  </li>
+  <li>
        L’icone doit être centrée dans le carré sur la largeur.
-  </lu>
-   <lu>
+  </li>
+   <li>
       La résolution minimale doit être de 320p
-   </lu>
+   </li>
 </li>

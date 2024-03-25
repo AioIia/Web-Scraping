@@ -1,0 +1,6 @@
+object of type 'NoneType' has no len()
+object of type 'NoneType' has no len()
+object of type 'NoneType' has no len()
+object of type 'NoneType' has no len()
+object of type 'NoneType' has no len()
+object of type 'NoneType' has no len()

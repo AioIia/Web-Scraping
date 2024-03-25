@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+import pandas as pd
 
 #fonction pour telecharger une image a partir dune chainde de characteres et dun path
 def download_logo(channel_name, path):
@@ -34,8 +34,13 @@ def download_logo(channel_name, path):
 
 
 
-#fonction pour ecrire du contenue dans un fichier
-def write_to_file(file, content):
+#fonction pour ecrire du contenue dans un fichier texte
+def write_to_txt_file(file, content):
     with open(file, 'a') as file:
         file.write(content)
         file.write('\n')
+
+# fonction pour ecrire du contenue dans un fichier xlsx
+def write_to_xlsx_file(file, content):
+    df = pd.DataFrame(content, columns=['channel_name'])
+    df.to_excel(file)

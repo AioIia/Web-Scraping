@@ -9,7 +9,7 @@
   * [`main.py`](#`main.py`)
   * [`download.py`](#`download.py`)
   * [`edit_image.py`](#`edit_image.py`)
-  * [`extract_xls_files.py`](#`extract_xls_files.py`)
+  * [`extract_xlsx_files.py`](#`extract_xlsx_files.py`)
 * [Using](#Using)
 ### Context
 
@@ -41,14 +41,18 @@ Pour déterminer le nom epg.best
 * #### download.py
   * `download_logo(channel_name, path)`
     * channel_name est la liste des chaines, path est le repertoir ou les chaines seront stockées.
-  * `write_to_file(file, content)`
+  * `write_to_txt_file(file, content)`
     * file est le fichier txt ou le content sera ecrit suivi dun retour a la ligne.
+  * `write_to_xlsx_file(file, content)`
+    * file est le fichier xlsx ou le content sera ecrit.
 * #### edit_image.py
   * `modify_image(path)`
     * path est le repertoire ou les images sont stocke puis applique a chacune d'elles les [Requirements](#Requirements)
 * #### extract_xls_files.py
-  * `extract_xls_files(path)`
+  * `extract_xlsx_files(path)`
     * path est le fichier .xls contenant la liste du nom des chaines sous le format epg.best.
+  * `get_all_specchar(path)`
+    * ici une liste contenant toutes les chaines contenant des caracteres speciaux est retourne ou path et un fichier xlsx contenant les channels_names
     
 ### Using
 Le projet utilise:
@@ -57,3 +61,4 @@ Le projet utilise:
 * bs4
 * requests
 * PIL
+* pandas

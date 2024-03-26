@@ -6,10 +6,11 @@
 * [Context](#Context)
 * [Requirements](#Requirements)
 * [Specifications](#Specifications)
-  * [`main.py`](#`main.py`)
-  * [`download.py`](#`download.py`)
-  * [`edit_image.py`](#`edit_image.py`)
-  * [`extract_xlsx_files.py`](#`extract_xlsx_files.py`)
+  * [`main.py`](#main.py)
+  * [`download.py`](#download.py)
+  * [`edit_image.py`](#edit_image.py)
+  * [`extract_xlsx_files.py`](#extract_xlsx_files.py)
+  * [`generate_epg.best.py`](#generate_epg.best.py)
 * [Using](#Using)
 ### Context
 
@@ -52,8 +53,14 @@ Pour déterminer le nom epg.best
   * `extract_xlsx_files(path)`
     * path est le fichier .xls contenant la liste du nom des chaines sous le format epg.best.
   * `get_all_specchar(path)`
-    * ici une liste contenant toutes les chaines contenant des caracteres speciaux est retourne ou path et un fichier xlsx contenant les channels_names
-    
+    * ici une liste contenant toutes les chaines contenant des caracteres speciaux est retourne ou path et un fichier xlsx contenant les channels_names.
+* #### generate_epg.best.py
+  * `modify_specchar(channel_name)`
+    * a partir de channel_name retourne le nom adapte en changeant les caracteres speciaux.
+  * `modify_all_channel(channel_list)`
+    * a partir de channel_list retourne une liste avec les noms adapte en changeant les caracteres speciaux en utilisant modify_specchar.
+
+
 ### Using
 Le projet utilise:
 * openpyxl

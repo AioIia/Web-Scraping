@@ -44,4 +44,4 @@ def get_all_specchar(path):
     return res
 
 if __name__ == '__main__':
-    print(get_channel_name("channels_names/20240318 list of tv channels.xlsx"))
+    print(get_channel_name("data/channels_names/20240318 list of tv channels.xlsx"))

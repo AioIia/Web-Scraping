@@ -40,4 +40,4 @@ def modify_image(path):
 
 
 if __name__ == '__main__':
-    modify_image('Logos/Logos_epg.best')
+    modify_image('data/logos/logos_epg.best')

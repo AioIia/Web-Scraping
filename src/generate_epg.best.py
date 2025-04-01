@@ -24,4 +24,4 @@ def modify_all_channel(channel_list):
     return res
 
 if __name__ == "__main__":
-    write_to_xlsx_file("channels_names/channel_list_charspec.xlsx", modify_all_channel(get_all_specchar("channels_names/20240318 list of tv channels.xlsx")))
+    write_to_xlsx_file("data/channels_names/channel_list_charspec.xlsx", modify_all_channel(get_all_specchar("channels_names/20240318 list of tv channels.xlsx")))

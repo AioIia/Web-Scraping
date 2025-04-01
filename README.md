@@ -25,7 +25,7 @@ Web-Scraping/
 │   ├── extract_xlsx.py      # Extraction et traitement des fichiers Excel
 │   ├── generate_epg.py      # Génération d’un guide électronique des programmes (EPG)
 │── data/                    # Contient les fichiers de données récupérées
-│   ├── channels/            # Liste des chaînes et leurs métadonnées
+│   ├── channels_names/      # Liste des chaînes et leurs métadonnées
 │── logs/                    # Contient les fichiers de logs et d'erreurs
 │   ├── errors.txt           # Enregistrement des erreurs rencontrées
 │── config/                  # Fichiers de configuration du projet
@@ -52,5 +52,5 @@ Vous pouvez modifier les paramètres dans le fichier `config/settings.json` pour
 Les erreurs et exceptions sont enregistrées dans `logs/errors.txt`. En cas de problème, consultez ce fichier pour diagnostiquer et corriger les erreurs éventuelles.
 
 ## Auteur
-[Votre Nom]
+Aiolia
 

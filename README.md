@@ -26,7 +26,6 @@ Web-Scraping/
 │   ├── generate_epg.py      # Génération d’un guide électronique des programmes (EPG)
 │── data/                    # Contient les fichiers de données récupérées
 │   ├── channels/            # Liste des chaînes et leurs métadonnées
-│   ├── raw/                 # Données brutes avant transformation
 │── logs/                    # Contient les fichiers de logs et d'erreurs
 │   ├── errors.txt           # Enregistrement des erreurs rencontrées
 │── config/                  # Fichiers de configuration du projet

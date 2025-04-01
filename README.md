@@ -1,71 +1,57 @@
+# Web-Scraping
 
-<h2 align="center">Test-web-scraping</h3>
-<h3 align="center">AIMT-058-23-000050-C Generation de la base de donnée d'icones de chaines tv 3/18/2024</h3>
+## Description
+Ce projet permet d'extraire et de manipuler des données provenant de différentes sources en ligne. Il inclut des scripts pour télécharger des fichiers, traiter des images et extraire des données Excel. Ce projet est particulièrement utile pour automatiser la collecte et le traitement de données issues de plusieurs plateformes.
 
-## Table of contents
-* [Context](#Context)
-* [Requirements](#Requirements)
-* [Specifications](#Specifications)
-  * [`main.py`](#main.py)
-  * [`download.py`](#download.py)
-  * [`edit_image.py`](#edit_image.py)
-  * [`extract_xlsx_files.py`](#extract_xlsx_files.py)
-  * [`generate_epg.best.py`](#generate_epg.best.py)
-* [Using](#Using)
-### Context
+## Installation
+### Prérequis
+- Python 3.x
+- pip
 
-Pour l’application airmont player, il est nécéssaire de générer la liste des icones des chaine de TV mondiales.
-Cette liste peut présenter plusieurs millier de fichiers, qui vont aussi évoluer dans le temps.
-Nous souhaitons générer automatiquement un répertoire contenant les logo des chaines de TV.
+### Installation des dépendances
+Exécutez la commande suivante pour installer les dépendances nécessaires :
+```bash
+pip install -r requirements.txt
+```
 
-### Requirements
+## Structure du projet
+Le projet est organisé de manière modulaire pour faciliter la maintenance et l'extensibilité.
+```
+Web-Scraping/
+│── src/                     # Contient les scripts principaux
+│   ├── main.py              # Script principal qui orchestre les différentes tâches
+│   ├── download.py          # Téléchargement et gestion des fichiers
+│   ├── edit_image.py        # Édition et manipulation d'images
+│   ├── extract_xlsx.py      # Extraction et traitement des fichiers Excel
+│   ├── generate_epg.py      # Génération d’un guide électronique des programmes (EPG)
+│── data/                    # Contient les fichiers de données récupérées
+│   ├── channels/            # Liste des chaînes et leurs métadonnées
+│   ├── raw/                 # Données brutes avant transformation
+│── logs/                    # Contient les fichiers de logs et d'erreurs
+│   ├── errors.txt           # Enregistrement des erreurs rencontrées
+│── config/                  # Fichiers de configuration du projet
+│   ├── settings.json        # Paramètres ajustables pour le scraping et le traitement
+│── README.md                # Documentation principale
+│── requirements.txt         # Liste des dépendances du projet
+│── .gitignore               # Fichiers et dossiers à exclure du contrôle de version
+```
 
+## Utilisation
+### Exécuter le script principal
+Pour lancer le projet, exécutez la commande suivante :
+```bash
+python src/main.py
+```
 
-La convention de nommage des fichier est celui de epg.best : *nom de la chaine sans espace*.*code du pays à 2 lettres*.
-La procédure est la suivante :
+### Personnalisation
+Vous pouvez modifier les paramètres dans le fichier `config/settings.json` pour ajuster le comportement du scraping et du traitement des données. Voici quelques paramètres que vous pouvez configurer :
+- **URLs des sources de données**
+- **Format de sortie des fichiers extraits**
+- **Options de filtrage et de nettoyage des données**
 
-* Extraire la liste des nom de chaines au format epg.best dans un fichier texte (ou csv). Cf fichier `channel_names/20240318 list of tv channels.xlsx`
-* Pour chacun des nom de chaine au format epg, lancer une recherche google image « nom de chaine au format epg.best » « logo », télécharger la première image et l’enregistrer sous son nom epg.best, dans 1 répertoire unique.
-Pour déterminer le nom epg.best
-* Zipper le repertoire et l’uploader sur [cloud.airmont.com/tbd](https://cloud.airmont.com/tbd)
-* Formater les images sous forme de carré avec un liseré blanc puis les sauvegarder dans un autre répertoire, respectant les consignes suivantes:
-  * Coté du carré 100%
-  * Largeur du liseré 7,50%
-  * Longueur de l'icone d'origine 85,00%
-  * L’icone doit être centrée dans le carré sur la largeur.
-  * La résolution minimale doit être de 320p.
+### Gestion des erreurs
+Les erreurs et exceptions sont enregistrées dans `logs/errors.txt`. En cas de problème, consultez ce fichier pour diagnostiquer et corriger les erreurs éventuelles.
 
-### Specifications
-* #### main.py
-  * `main(path_to_write, path_to_channel_names)`
-    * path_to_write est le repertoir ou les chaines seront stockées, path_to_channel_names est le fichier texte où le nom de les chaines sont sstocke ouù une ligne correspond au nom d'une chaine.
-* #### download.py
-  * `download_logo(channel_name, path)`
-    * channel_name est la liste des chaines, path est le repertoir ou les chaines seront stockées.
-  * `write_to_txt_file(file, content)`
-    * file est le fichier txt ou le content sera ecrit suivi dun retour a la ligne.
-  * `write_to_xlsx_file(file, content)`
-    * file est le fichier xlsx ou le content sera ecrit.
-* #### edit_image.py
-  * `modify_image(path)`
-    * path est le repertoire ou les images sont stocke puis applique a chacune d'elles les [Requirements](#Requirements)
-* #### extract_xls_files.py
-  * `extract_xlsx_files(path)`
-    * path est le fichier .xls contenant la liste du nom des chaines sous le format epg.best.
-  * `get_all_specchar(path)`
-    * ici une liste contenant toutes les chaines contenant des caracteres speciaux est retourne ou path et un fichier xlsx contenant les channels_names.
-* #### generate_epg.best.py
-  * `modify_specchar(channel_name)`
-    * a partir de channel_name retourne le nom adapte en changeant les caracteres speciaux.
-  * `modify_all_channel(channel_list)`
-    * a partir de channel_list retourne une liste avec les noms adapte en changeant les caracteres speciaux en utilisant modify_specchar.
+## Auteur
+[Votre Nom]
 
-
-### Using
-Le projet utilise:
-* openpyxl
-* os
-* bs4
-* requests
-* PIL
-* pandas

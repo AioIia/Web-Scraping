@@ -1,7 +1,7 @@
 # Web-Scraping
 
 ## Description
-Ce projet permet d'extraire et de manipuler des données provenant de différentes sources en ligne. Il inclut des scripts pour télécharger des fichiers, traiter des images et extraire des données Excel. Ce projet est particulièrement utile pour automatiser la collecte et le traitement de données issues de plusieurs plateformes.
+Ce projet permet d'extraire et de manipuler des données provenant de différentes sources en ligne. Il inclut des scripts pour télécharger des fichiers et traiter les données. Ce projet est particulièrement utile pour automatiser la collecte et le traitement de données issues de plusieurs plateformes.
 
 ## Installation
 ### Prérequis
@@ -9,10 +9,17 @@ Ce projet permet d'extraire et de manipuler des données provenant de différent
 - pip
 
 ### Installation des dépendances
-Exécutez la commande suivante pour installer les dépendances nécessaires :
-```bash
-pip install -r requirements.txt
-```
+1. (Optionnel) Créez un environnement virtuel pour isoler les dépendances du projet :
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Sous Linux/macOS
+   venv\Scripts\activate  # Sous Windows
+   ```
+
+2. Installez les dépendances nécessaires :
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Structure du projet
 Le projet est organisé de manière modulaire pour faciliter la maintenance et l'extensibilité.
@@ -21,15 +28,11 @@ Web-Scraping/
 │── src/                     # Contient les scripts principaux
 │   ├── main.py              # Script principal qui orchestre les différentes tâches
 │   ├── download.py          # Téléchargement et gestion des fichiers
-│   ├── edit_image.py        # Édition et manipulation d'images
-│   ├── extract_xlsx.py      # Extraction et traitement des fichiers Excel
-│   ├── generate_epg.py      # Génération d’un guide électronique des programmes (EPG)
+│   ├── process.py           # Traitement et normalisation des données
 │── data/                    # Contient les fichiers de données récupérées
 │   ├── channels_names/      # Liste des chaînes et leurs métadonnées
 │── logs/                    # Contient les fichiers de logs et d'erreurs
 │   ├── errors.txt           # Enregistrement des erreurs rencontrées
-│── config/                  # Fichiers de configuration du projet
-│   ├── settings.json        # Paramètres ajustables pour le scraping et le traitement
 │── README.md                # Documentation principale
 │── requirements.txt         # Liste des dépendances du projet
 │── .gitignore               # Fichiers et dossiers à exclure du contrôle de version
@@ -37,16 +40,16 @@ Web-Scraping/
 
 ## Utilisation
 ### Exécuter le script principal
-Pour lancer le projet, exécutez la commande suivante :
+Usage :
 ```bash
-python src/main.py
+python main.py              # Exécute le processus complet
+python main.py download     # Exécute uniquement le téléchargement
+python main.py process      # Exécute uniquement le traitement des images
+python main.py normalize    # Prépare uniquement la liste normalisée
 ```
 
 ### Personnalisation
-Vous pouvez modifier les paramètres dans le fichier `config/settings.json` pour ajuster le comportement du scraping et du traitement des données. Voici quelques paramètres que vous pouvez configurer :
-- **URLs des sources de données**
-- **Format de sortie des fichiers extraits**
-- **Options de filtrage et de nettoyage des données**
+Certains paramètres peuvent être ajustés directement dans les scripts si nécessaire. Assurez-vous que les fichiers de données sont bien placés dans le dossier `data/channels_names/`.
 
 ### Gestion des erreurs
 Les erreurs et exceptions sont enregistrées dans `logs/errors.txt`. En cas de problème, consultez ce fichier pour diagnostiquer et corriger les erreurs éventuelles.

@@ -106,6 +106,7 @@ Usage:
     python main.py download         # Exécute uniquement le téléchargement
     python main.py process          # Exécute uniquement le traitement des images
     python main.py create_excel     # Crée uniquement le fichier Excel à partir du fichier texte
+    python main.py clear            # Supprime les fichiers temporaires
     python main.py help             # Affiche cette aide
 
 Description:
@@ -122,6 +123,16 @@ Configuration actuelle:
     - Facteur d'échelle: {image_scale_factor}
     """.format(**CONFIG))
 
+def clear():
+    logger.info("Effacement des fichiers...")
+    if os.path.exists(CONFIG['input_file']):
+        os.remove(CONFIG['input_file'])
+    elif os.path.exists('data/logos'):
+        for file in os.listdir('data/logos'):
+            os.remove('data/logos/'+file)
+        os.rmdir('data/logos')
+    logger.info("Fichiers effacés avec succès!")
+    
 def main():
     """Fonction principale qui orchestre le workflow selon les arguments."""
     setup_directories()
@@ -136,6 +147,8 @@ def main():
             process()
         elif command == 'create_excel':
             create_excel_file()
+        elif command == 'clear':
+            clear()
         elif command in ['help', '-h', '--help']:
             show_help()
         else:
@@ -145,7 +158,8 @@ def main():
         # Exécuter le processus complet
         success = True
         
-        if not os.path.exists(CONFIG['input_file']):
+        
+        if success:
             success = create_excel_file()
         
         if success:

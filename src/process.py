@@ -176,12 +176,6 @@ def create_excel(fichier_txt, fichier_excel="data/channels.xlsx"):
                 if processed % 10 == 0:
                     time.sleep(2)
 
-        # Ajouter un résumé à la fin
-        ws.append([])
-        ws.append(["Statistiques", ""])
-        ws.append(["Total chaînes", processed])
-        ws.append(["Pays identifiés", successful])
-        ws.append(["Pays inconnus", unknown])
         
         # Ajuster la largeur des colonnes
         for column in ws.columns:

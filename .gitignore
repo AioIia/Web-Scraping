@@ -160,4 +160,5 @@ cython_debug/
 #.idea/
 .idea/
 *.png
-data/channels_names/normalized_channels.xlsx
+data/channels_names/
+data/logos/

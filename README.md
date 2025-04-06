@@ -1,7 +1,7 @@
-# 🌐 Web-Scraping
+# 🌐 TV Logo Downloader
 
 ## 🚀 Description
-Ce projet permet d'extraire et de manipuler des données provenant de différentes sources en ligne. Il inclut des scripts pour télécharger des fichiers et traiter les données, facilitant ainsi l'automatisation de la collecte et du traitement des données issues de plusieurs plateformes.
+Ce projet permet de télécharger et traiter automatiquement des logos de chaînes de télévision à partir d'Internet. Il recherche les logos sur Google Images, les télécharge, puis les normalise pour obtenir une collection uniforme.
 
 ---
 
@@ -35,9 +35,12 @@ Web-Scraping/
 │   ├── download.py          # Téléchargement et gestion des fichiers
 │   ├── process.py           # Traitement et normalisation des données
 │── data/                    # Contient les fichiers de données récupérées
-│   ├── channels_names/      # Liste des chaînes et leurs métadonnées
+│   ├── xxxx.txt             # Fichier texte utiliser
 │── logs/                    # Contient les fichiers de logs et d'erreurs
+│   ├── download.log         # Enregistrement des logs rencontrées dans download.py
 │   ├── errors.txt           # Enregistrement des erreurs rencontrées
+│   ├── main.log             # Enregistrement des logs rencontrées dans main.py
+│   ├── process.log          # Enregistrement des logs rencontrées dans process.py
 │── README.md                # Documentation principale
 │── requirements.txt         # Liste des dépendances du projet
 │── .gitignore               # Fichiers et dossiers à exclure du contrôle de version
@@ -47,25 +50,49 @@ Web-Scraping/
 
 ## ⚡ Utilisation
 
+### 🛠 Préparation
+1. Placez un fichier texte contenant les noms des chaînes (un par ligne) dans le dossier `data/`
+2. Assurez-vous que les dossiers nécessaires existent (créés automatiquement au démarrage)
+
 ### ▶️ Exécuter le script principal
 
 Usage :
 ```bash
-python main.py              # Exécute le processus complet
-python main.py download     # Exécute uniquement le téléchargement
-python main.py process      # Exécute uniquement le traitement des images
-python main.py normalize    # Prépare uniquement la liste normalisée
+python main.py                  # Exécute le processus complet
+python main.py download         # Exécute uniquement le téléchargement
+python main.py process          # Exécute uniquement le traitement des images
+python main.py create_excel     # Crée uniquement le fichier Excel à partir du fichier texte
+python main.py help             # Affiche l'aide détaillée
 ```
 
+### 🔄 Processus de fonctionnement
+1. **Création du fichier Excel** : Le script recherche le pays associé à chaque chaîne
+2. **Téléchargement des logos** : Récupération des logos depuis Google Images
+3. **Traitement des images** : Normalisation des logos (taille, fond, format)
+
 ### 🎛 Personnalisation
-Certains paramètres peuvent être ajustés directement dans les scripts si nécessaire. Assurez-vous que les fichiers de données sont bien placés dans le dossier `data/channels_names/`.
+Les paramètres peuvent être ajustés dans la section `CONFIG` du script `main.py` :
+- Taille minimale des images
+- Facteur d'échelle
+- Sauvegarde des images originales
+- Répertoires d'entrée/sortie
 
 ### 🛑 Gestion des erreurs
-Les erreurs et exceptions sont enregistrées dans `logs/errors.txt`. En cas de problème, consultez ce fichier pour diagnostiquer et corriger les erreurs éventuelles.
+Les erreurs et exceptions sont enregistrées dans `logs/errors.txt` et dans les fichiers de logs spécifiques. En cas de problème, consultez ces fichiers pour diagnostiquer et corriger les erreurs éventuelles.
+
+---
+
+## 📋 Fonctionnalités principales
+
+- **Détection automatique du pays** : Identifie le pays d'origine de la chaîne
+- **Téléchargement intelligent** : Utilise différents User-Agents pour éviter les blocages
+- **Normalisation des images** : Crée des logos uniformes avec fond blanc
+- **Gestion des erreurs** : Sauvegarde les erreurs et fait plusieurs tentatives en cas d'échec
+- **Suivi du progrès** : Affichage de l'avancement des opérations
 
 ---
 
 ## 👤 Auteur
-**Aiolia** ✨
+**Aiolia**
 
 ---

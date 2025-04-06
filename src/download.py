@@ -6,17 +6,44 @@ Ce module contient les fonctions de téléchargement et de gestion des noms de c
 """
 
 import os
+import time
+import logging
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from openpyxl import load_workbook
+import random
+from tqdm import tqdm
+
+# Configuration du logger
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('logs/download.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+# Liste d'agents utilisateurs pour éviter les blocages
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"
+]
 
 # Dictionnaire pour la conversion des caractères spéciaux
 SPECIAL_CHAR_MAPPING = {
     "+": "Plus", "&": "And", "'": "", "_": "", 
     "(": "", "/": "", ")": "", "-": "", 
     ".": "", ";": "", " ": "", "*": "", 
-    "!": "", "´": ""
+    "!": "", "´": "", ":": "", "?": "",
+    ",": "", "@": "", "=": "", "#": "",
+    "$": "", "%": "", "^": "", "[": "",
+    "]": "", "{": "", "}": "", "|": "",
+    "\\": "", "<": "", ">": "", "\"": ""
 }
 
 # Utilitaires de fichiers
@@ -24,7 +51,7 @@ def ensure_directory_exists(path):
     """Crée le répertoire s'il n'existe pas."""
     if not os.path.exists(path):
         os.makedirs(path)
-        print(f"Répertoire créé: {path}")
+        logger.info(f"Répertoire créé: {path}")
 
 def write_to_txt_file(file_path, content):
     """Écrit du contenu dans un fichier texte."""
@@ -35,17 +62,29 @@ def write_to_txt_file(file_path, content):
         file.write(content)
         file.write('\n')
 
-def write_to_xlsx_file(file_path, content, column_name='channel_name'):
-    """Écrit du contenu dans un fichier Excel."""
-    directory = os.path.dirname(file_path)
-    ensure_directory_exists(directory)
+# Traitement des noms de chaînes
+def normalize_channel_name(channel_name):
+    """
+    Normalise un nom de chaîne en remplaçant les caractères spéciaux.
     
-    df = pd.DataFrame(content, columns=[column_name])
-    df.to_excel(file_path, index=False)
-    print(f"Données écrites dans {file_path}")
+    Args:
+        channel_name (str): Nom de chaîne original
+    
+    Returns:
+        str: Nom de chaîne normalisé
+    """
+    normalized_name = ""
+    
+    for char in channel_name:
+        if not (char.isalpha() or char.isnumeric()):
+            normalized_name += SPECIAL_CHAR_MAPPING.get(char, "")
+        else:
+            normalized_name += char
+    
+    return normalized_name
 
 # Téléchargement des logos
-def download_logo(channel_name, output_dir):
+def download_logo(channel_name, epg_best, output_dir="data/logos"):
     """
     Télécharge le logo d'une chaîne de télévision depuis Google Images.
     
@@ -96,7 +135,7 @@ def download_logo(channel_name, output_dir):
         image_response.raise_for_status()
         
         # Enregistrement de l'image
-        output_path = f'{output_dir}/{channel_name}.png'
+        output_path = f'{output_dir}/{normalize_channel_name(channel_name)}.{epg_best}.png'
         with open(output_path, 'wb') as file:
             file.write(image_response.content)
         
@@ -109,153 +148,35 @@ def download_logo(channel_name, output_dir):
         print(f"Erreur inattendue pour {channel_name}: {e}")
         return False
 
-# Extraction des noms de chaînes depuis Excel
-def extract_channel_names(excel_path, worksheet_name='List of channels'):
-    """
-    Extrait la liste des noms de chaînes à partir d'un fichier Excel.
-    
-    Args:
-        excel_path (str): Chemin vers le fichier Excel
-        worksheet_name (str): Nom de la feuille contenant la liste des chaînes
-    
-    Returns:
-        list: Liste des noms de chaînes
-    """
-    try:
-        wb = load_workbook(excel_path, data_only=True)
-        ws = wb[worksheet_name]
-        
-        all_columns = list(ws.columns)
-        channel_names = []
-        
-        # Supposons que les noms de chaînes sont dans la première colonne
-        for cell in all_columns[0]:
-            content = cell.value
-            if content:
-                channel_names.append(content)
-        
-        return channel_names
-    
-    except Exception as e:
-        write_to_txt_file('logs/errors.txt', f"Erreur lors de l'extraction des noms de chaînes: {e}")
-        return []
-
-def extract_channels_with_special_chars(excel_path, worksheet_name='List of channels'):
-    """
-    Extrait la liste des noms de chaînes contenant des caractères spéciaux.
-    
-    Args:
-        excel_path (str): Chemin vers le fichier Excel
-        worksheet_name (str): Nom de la feuille contenant la liste des chaînes
-    
-    Returns:
-        list: Liste des noms de chaînes contenant des caractères spéciaux
-    """
-    try:
-        wb = load_workbook(excel_path, data_only=True)
-        ws = wb[worksheet_name]
-        
-        all_columns = list(ws.columns)
-        channels_with_special_chars = []
-        
-        for cell in all_columns[0]:
-            content = cell.value
-            if not content:
-                continue
-                
-            for char in content:
-                if not (char.isalpha() or char.isnumeric() or char == " "):
-                    channels_with_special_chars.append(content)
-                    break
-        
-        return channels_with_special_chars
-    
-    except Exception as e:
-        write_to_txt_file('logs/errors.txt', f"Erreur lors de l'extraction des chaînes avec caractères spéciaux: {e}")
-        return []
-
-# Traitement des noms de chaînes
-def normalize_channel_name(channel_name):
-    """
-    Normalise un nom de chaîne en remplaçant les caractères spéciaux.
-    
-    Args:
-        channel_name (str): Nom de chaîne original
-    
-    Returns:
-        str: Nom de chaîne normalisé
-    """
-    normalized_name = ""
-    
-    for char in channel_name:
-        if not (char.isalpha() or char.isnumeric()):
-            normalized_name += SPECIAL_CHAR_MAPPING.get(char, "")
-        else:
-            normalized_name += char
-    
-    return normalized_name
-
-def normalize_channel_list(channel_list):
-    """
-    Normalise une liste de noms de chaînes.
-    
-    Args:
-        channel_list (list): Liste des noms de chaînes originaux
-    
-    Returns:
-        list: Liste des noms de chaînes normalisés
-    """
-    return [normalize_channel_name(channel) for channel in channel_list]
-
-def download_all_logos(channel_list_path, output_dir):
+def download_all_logos(excel_path, output_dir="data/logos"):
     """
     Télécharge les logos pour toutes les chaînes listées dans un fichier.
     
     Args:
-        channel_list_path (str): Chemin vers le fichier contenant la liste des chaînes
+        excel_path (str): Chemin vers le fichier contenant la liste des chaînes
         output_dir (str): Répertoire où sauvegarder les logos
     """
     ensure_directory_exists(output_dir)
     
     try:
-        with open(channel_list_path, 'r', encoding='utf-8') as file:
-            channels = [line.strip() for line in file.readlines()]
-    except UnicodeDecodeError:
-        # Essai avec un autre encodage si utf-8 échoue
-        with open(channel_list_path, 'r', encoding='latin-1') as file:
-            channels = [line.strip() for line in file.readlines()]
+        df = pd.read_excel(excel_path)
+    except Exception as e:
+        print(f"Erreur lors de la lecture du fichier Excel: {e}")
+        return
     
-    channels.sort()
+    # Récupération des noms de chaînes (supposé en première colonne)
+    channels = df.iloc[:, 0].dropna().astype(str).tolist()
+    epg_best = df.iloc[:, 1].dropna().astype(str).tolist()
     total_channels = len(channels)
     
-    for index, channel in enumerate(channels):
+    # Barre de progression tqdm
+    for index, channel in enumerate(tqdm(channels, desc="Téléchargement des logos", unit="logo")):
         try:
-            success = download_logo(channel, output_dir)
-            progress = round((index + 1) / total_channels * 100, 2)
+            success = download_logo(channel, epg_best[index])
             
-            if success:
-                print(f"Logo téléchargé pour {channel} ({progress}%)")
-            else:
-                print(f"Échec du téléchargement pour {channel} ({progress}%)")
+            if not success:
+                logger.warning(f"Échec du téléchargement pour {channel}")
                 write_to_txt_file('logs/errors.txt', f"Échec du téléchargement pour {channel}")
         
         except Exception as e:
             write_to_txt_file('logs/errors.txt', f"Erreur lors du téléchargement du logo pour {channel}: {e}")
-
-def prepare_normalized_channel_list(excel_path, output_file):
-    """
-    Prépare une liste normalisée des chaînes à partir d'un fichier Excel et l'enregistre.
-    
-    Args:
-        excel_path (str): Chemin vers le fichier Excel source
-        output_file (str): Chemin vers le fichier de sortie
-    """
-    # Extraire les chaînes avec caractères spéciaux
-    channels_with_special_chars = extract_channels_with_special_chars(excel_path)
-    
-    # Normaliser les noms de chaînes
-    normalized_channels = normalize_channel_list(channels_with_special_chars)
-    
-    # Écrire dans un fichier Excel
-    write_to_xlsx_file(output_file, normalized_channels)
-    print(f"Liste des chaînes normalisées enregistrée dans {output_file}")

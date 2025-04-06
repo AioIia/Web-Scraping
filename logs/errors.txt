@@ -1,0 +1,41 @@
+Échec du téléchargement pour 5*+1.gb
+Échec du téléchargement pour 5*.gb
+Échec du téléchargement pour ABC News Australian
+Échec du téléchargement pour Al Arabiya
+Échec du téléchargement pour Al Arabiya Al Hadath
+Échec du téléchargement pour Al Jazeera Arabic
+Échec du téléchargement pour Al Jazeera English
+Échec du téléchargement pour NASA
+Échec du téléchargement pour ABC News Australian
+Erreur lors du téléchargement du logo pour Pays inconnus: list index out of range
+Erreur lors du téléchargement du logo pour Pays inconnus: list index out of range
+Erreur lors du téléchargement du logo pour Pays inconnus: list index out of range
+Erreur lors du téléchargement du logo pour Pays inconnus: list index out of range
+Erreur de traitement pour ABCNewsAustralian.au.png: name 'backup_dir' is not defined
+Erreur de traitement pour AlArabiya.fr.png: name 'backup_dir' is not defined
+Erreur de traitement pour AlArabiyaAlHadath.de.png: name 'backup_dir' is not defined
+Erreur de traitement pour AlJazeeraArabic.sa.png: name 'backup_dir' is not defined
+Erreur de traitement pour AlJazeeraEnglish.ca.png: name 'backup_dir' is not defined
+Erreur de traitement pour BloombergGlobalFinancialNews.ca.png: name 'backup_dir' is not defined
+Erreur de traitement pour BloombergHD.jp.png: name 'backup_dir' is not defined
+Erreur de traitement pour CBBCHD.us.png: name 'backup_dir' is not defined
+Erreur de traitement pour CbeebiesHD.ca.png: name 'backup_dir' is not defined
+Erreur de traitement pour CCTV4International.it.png: name 'backup_dir' is not defined
+Erreur de traitement pour CNBC.ca.png: name 'backup_dir' is not defined
+Erreur de traitement pour CNNTurk.cn.png: name 'backup_dir' is not defined
+Erreur de traitement pour EuronewsDeutsch.fr.png: name 'backup_dir' is not defined
+Erreur de traitement pour EuronewsEnglish.fr.png: name 'backup_dir' is not defined
+Erreur de traitement pour EuronewsFrench.fr.png: name 'backup_dir' is not defined
+Erreur de traitement pour France24Arabic.fr.png: name 'backup_dir' is not defined
+Erreur de traitement pour France24English.fr.png: name 'backup_dir' is not defined
+Erreur de traitement pour France24French.fr.png: name 'backup_dir' is not defined
+Erreur de traitement pour France24Spanish.fr.png: name 'backup_dir' is not defined
+Erreur de traitement pour NASA.us.png: name 'backup_dir' is not defined
+Erreur de traitement pour Paysidentifiés.0.png: name 'backup_dir' is not defined
+Erreur de traitement pour SkyDisneyHD.de.png: name 'backup_dir' is not defined
+Erreur de traitement pour SkyNews.au.png: name 'backup_dir' is not defined
+Erreur de traitement pour Statistiques.23.png: name 'backup_dir' is not defined
+Erreur de traitement pour Totalchaînes.23.png: name 'backup_dir' is not defined
+Erreur de traitement pour TRTWorldHD.ca.png: name 'backup_dir' is not defined
+Erreur lors du téléchargement du logo pour Pays inconnus: list index out of range
+Erreur lors du téléchargement du logo pour Pays inconnus: list index out of range

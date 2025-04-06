@@ -48,14 +48,14 @@ def ensure_directory_exists(path):
 
 def setup_directories():
     """S'assure que les répertoires nécessaires existent."""
-    for directory in ['data/logos', 'data/channels_names', 'logs']:
+    for directory in ['data/logos', 'logs']:
         ensure_directory_exists(directory)
 
 def get_txt_file():
     """Trouve le premier fichier texte dans le répertoire data."""
     txt_files = [f for f in os.listdir(CONFIG['input_dir']) if f.endswith('.txt')]
     if not txt_files:
-        logger.error("Aucun fichier texte trouvé dans le répertoire data.")
+        logger.error("Veuillez placer un fichier texte avec les chaînes dans le répertoire 'data'.")
         sys.exit(1)
     return os.path.join(CONFIG['input_dir'], txt_files[0])
 

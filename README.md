@@ -59,9 +59,10 @@ Web-Scraping/
 Usage :
 ```bash
 python main.py                  # Exécute le processus complet
-python main.py download         # Exécute uniquement le téléchargement
+python main.py download         # Exécute uniquement le téléchargement (besoin du fichier Excel)
 python main.py process          # Exécute uniquement le traitement des images
 python main.py create_excel     # Crée uniquement le fichier Excel à partir du fichier texte
+python main.py clear            # Supprime les fichiers temporaires
 python main.py help             # Affiche l'aide détaillée
 ```
 

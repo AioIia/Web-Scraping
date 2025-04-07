@@ -167,7 +167,6 @@ def download_all_logos(excel_path, output_dir="data/logos"):
     # Récupération des noms de chaînes (supposé en première colonne)
     channels = df.iloc[:, 0].dropna().astype(str).tolist()
     epg_best = df.iloc[:, 1].dropna().astype(str).tolist()
-    total_channels = len(channels)
     
     # Barre de progression tqdm
     for index, channel in enumerate(tqdm(channels, desc="Téléchargement des logos", unit="logo")):

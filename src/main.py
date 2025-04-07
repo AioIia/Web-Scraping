@@ -127,7 +127,7 @@ def clear():
     logger.info("Effacement des fichiers...")
     if os.path.exists(CONFIG['input_file']):
         os.remove(CONFIG['input_file'])
-    elif os.path.exists('data/logos'):
+    if os.path.exists('data/logos'):
         for file in os.listdir('data/logos'):
             os.remove('data/logos/'+file)
         os.rmdir('data/logos')
